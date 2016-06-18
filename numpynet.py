@@ -29,9 +29,9 @@ class Network(object):
             n_test = len(test_data)
        
         n = len(training_data)
-        for j in xrange(epochs):
+        for j in range(epochs):
             random.shuffle(training_data)
-            batches = [training_data[k:k + batch_size] for k in xrange(0, n, batch_size)]
+            batches = [training_data[k:k + batch_size] for k in range(0, n, batch_size)]
 
             for batch in batches:
                 self.update_batch(batch, learning_rate)
@@ -74,7 +74,7 @@ class Network(object):
         nabla_b[-1] = delta
         nabla_w[-1] = np.dot(delta, activations[-2].transpose())
 
-        for l in xrange(2, self.num_layers):
+        for l in range(2, self.num_layers):
             z = zs[-l]
             sp = sigmoid_prime(z)
             delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
